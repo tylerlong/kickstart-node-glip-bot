@@ -24,6 +24,8 @@
 
 ```
 yarn install
-cp .env.sample .env
-edit .env
+
+cd messages
+cp env.sample.yml env.yml
+edit env.yml
 ```
