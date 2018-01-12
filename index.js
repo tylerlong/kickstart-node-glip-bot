@@ -2,8 +2,6 @@ const dotenv = require('dotenv')
 const commander = require('commander')
 const express = require('express')
 const RingCentral = require('ringcentral-js-concise')
-const fs = require('fs')
-const path = require('path')
 const bodyParser = require('body-parser')
 const axios = require('axios')
 const R = require('ramda')
@@ -13,15 +11,8 @@ const cheerio = require('cheerio')
 const pkg = require('./package.json')
 
 dotenv.config()
-const tokenFile = path.join(__dirname, '.token')
-const rc = new RingCentral(
-  process.env.GLIP_CLIENT_ID,
-  process.env.GLIP_CLIENT_SECRET,
-  process.env.GLIP_API_SERVER
-)
-if (fs.existsSync(tokenFile)) { // restore token
-  rc.token(JSON.parse(fs.readFileSync(tokenFile, 'utf-8')))
-}
+const rc = new RingCentral('', '', process.env.GLIP_API_SERVER)
+rc.token(JSON.parse(process.env.GLIP_API_TOKEN))
 
 const sendGlipMessage = async (groupId, text, attachments) => {
   try {
@@ -84,15 +75,6 @@ const sendStockMessage = async (symbol, groupId) => {
 
 const app = express()
 app.use(bodyParser.json())
-app.get('/oauth', async (req, res) => {
-  try {
-    await rc.authorize({ code: req.query.code, redirect_uri: `${process.env.GLIP_BOT_SERVER}/oauth` })
-  } catch (e) {
-    console.error(e.response.data)
-  }
-  fs.writeFileSync(tokenFile, JSON.stringify(rc.token())) // save token
-  res.send('')
-})
 app.post('/webhook', async (req, res) => {
   const message = req.body.body
   if (message && message.type === 'TextMessage') {
