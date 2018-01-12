@@ -1,22 +1,3 @@
-const dotenv = require('dotenv')
-const express = require('express')
-const RingCentral = require('ringcentral-js-concise')
-const bodyParser = require('body-parser')
-
-dotenv.config()
-const rc = new RingCentral('', '', process.env.GLIP_API_SERVER)
-rc.token(JSON.parse(process.env.GLIP_API_TOKEN))
-
-const sendGlipMessage = async (groupId, text, attachments) => {
-  try {
-    await rc.post('/restapi/v1.0/glip/posts', { groupId, text, attachments })
-  } catch (e) {
-    console.error(e.response ? e.response.data : e)
-  }
-}
-
-const app = express()
-app.use(bodyParser.json())
 app.post('/webhook', async (req, res) => {
   const message = req.body.body
   if (message && message.creatorId !== rc.token().owner_id) {
@@ -25,5 +6,3 @@ app.post('/webhook', async (req, res) => {
   res.set('validation-token', req.get('validation-token'))
   res.send('')
 })
-
-app.listen(3000)
