@@ -13,10 +13,11 @@ package:
         - handler.js
     excludeDevDependencies: true
 functions:
-    environment:
-        GLIP_API_SERVER: https://platform.devtest.ringcentral.com
-        GLIP_API_TOKEN: {"access_token":"U0pDMTFQMDFQQVMwMHxBQUQyNE91ODlHZGxjanJ3QnYxWVRPRFgydlY0M0VLUDJLT3puVGl1Rmt4UmtCWEJBZW8yTlVUN2xHeVhROTlkcHJCNF9QWWRPMEVYNENYQjd4dmJsWHJoYlpUTVU0Y3N0NS0waXdPTkJ5LXBFZElweXdpUzJ2MjhQQUJvbjN1enJIdGd1VWdkamFrbDdtTzBmSVRvVDAzWnlpdm81UHdFLVBMMHFDRHNURjQtTElETndCZUFUQzdWdVJBdDZXOFBkdkF8d3l1NnpRfG5ZNmgwYXM3bzl3dXZRVFR6OHhtYVE","token_type":"bearer","expires_in":2147483647,"scope":"ReadMessages Faxes ReadPresence Meetings VoipCalling ReadCallRecording Glip ReadContacts Contacts ReadAccounts EditExtensions RingOut SMS InternalMessages ReadCallLog SubscriptionWebhook EditMessages EditPresence","owner_id":"234505004","endpoint_id":"VbMZxbwxSoeaws-hd9WK2w"}
     handleMessage:
+        environment:
+            GLIP_API_SERVER: https://platform.devtest.ringcentral.com
+            GLIP_API_TOKEN: |
+                {"access_token":"U0pDMTFQMDFQQVMwMHxBQUQyNE91ODlHZGxjanJ3QnYxWVRPRFgydlY0M0VLUDJLT3puVGl1Rmt4UmtCWEJBZW8yTlVUN2xHeVhROTlkcHJCNF9QWWRPMEVYNENYQjd4dmJsWHJoYlpUTVU0Y3N0NS0waXdPTkJ5LXBFZElweXdpUzJ2MjhQQUJvbjN1enJIdGd1VWdkamFrbDdtTzBmSVRvVDAzWnlpdm81UHdFLVBMMHFDRHNURjQtTElETndCZUFUQzdWdVJBdDZXOFBkdkF8d3l1NnpRfG5ZNmgwYXM3bzl3dXZRVFR6OHhtYVE","token_type":"bearer","expires_in":2147483647,"scope":"ReadMessages Faxes ReadPresence Meetings VoipCalling ReadCallRecording Glip ReadContacts Contacts ReadAccounts EditExtensions RingOut SMS InternalMessages ReadCallLog SubscriptionWebhook EditMessages EditPresence","owner_id":"234505004","endpoint_id":"VbMZxbwxSoeaws-hd9WK2w"}
         handler: handler.handleMessage
         events:
             -
