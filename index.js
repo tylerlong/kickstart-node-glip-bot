@@ -1,10 +1,7 @@
 const dotenv = require('dotenv')
-const commander = require('commander')
 const express = require('express')
 const RingCentral = require('ringcentral-js-concise')
 const bodyParser = require('body-parser')
-
-const pkg = require('./package.json')
 
 dotenv.config()
 const rc = new RingCentral('', '', process.env.GLIP_API_SERVER)
@@ -29,5 +26,4 @@ app.post('/webhook', async (req, res) => {
   res.send('')
 })
 
-commander.version(pkg.version).option('-p --port <port>', 'Specify port').parse(process.argv)
-app.listen(commander.port || 3000)
+app.listen(3000)
