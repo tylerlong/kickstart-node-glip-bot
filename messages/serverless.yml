@@ -1,0 +1,22 @@
+service:
+    name: glip-messages
+provider:
+    name: aws
+    runtime: nodejs6.10
+    # stage: production
+    stage: dev
+    region: us-west-1
+    memorySize: 128
+    timeout: 16
+package:
+    include:
+        handler.js
+    excludeDevDependencies: true
+functions:
+    handleMessage:
+        handler: handler.handleMessage
+        events:
+            -
+                http:
+                    path: messages/handle
+                    method: post

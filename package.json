@@ -6,11 +6,11 @@
   "license": "MIT",
   "scripts": {
     "upgrade": "yarn-upgrade-all",
-    "info": "cd messages && severless info",
+    "info": "cd messages && serverless info",
     "log": "cd messages && serverless -f handleMessage logs",
     "log:stream": "yarn log -t",
     "remove": "cd messages && serverless remove",
-    "deploy:full": "cd licenses && serverless deploy",
+    "deploy:full": "cd messages && serverless deploy",
     "deploy": "yarn deploy:full function -f handleMessage"
   },
   "dependencies": {
