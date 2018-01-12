@@ -9,9 +9,12 @@ provider:
     memorySize: 128
     timeout: 16
 package:
+    exclude:
+        - '*.js'
+        - '*.yml'
     include:
         - handler.js
-    excludeDevDependencies: true
+    excludeDevDependencies: false
 functions:
     handleMessage:
         environment: ${file(./env.yml):${self:provider.stage}}
