@@ -5,6 +5,10 @@ const rc = new RingCentral('', '', process.env.GLIP_API_SERVER)
 rc.token(token)
 
 const handleMessage = (event, context, callback) => {
+  if (event.headers['Verification-Token'] !== process.env.GLIP_VERIFICATION_TOKEN) {
+    callback(null, { statusCode: 404 })
+    return
+  }
   callback(null, { statusCode: 200, body: '', headers: { 'Validation-Token': event.headers['Validation-Token'] } })
   if (event.body === null) {
     return
