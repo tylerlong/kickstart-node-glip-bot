@@ -11,7 +11,7 @@ const sendGlipMessage = async (groupId, text, attachments) => {
   try {
     await rc.post('/restapi/v1.0/glip/posts', { groupId, text, attachments })
   } catch (e) {
-    console.error(e.response.data)
+    console.error(e.response ? e.response.data : e)
   }
 }
 
@@ -19,8 +19,8 @@ const app = express()
 app.use(bodyParser.json())
 app.post('/webhook', async (req, res) => {
   const message = req.body.body
-  if (message && message.type === 'TextMessage' && message.creatorId !== rc.token().owner_id) {
-    await sendGlipMessage(message.groupId, `I have received: ${message.text}`)
+  if (message && message.creatorId !== rc.token().owner_id) {
+    await sendGlipMessage(message.groupId, JSON.stringify(message, null, 2))
   }
   res.set('validation-token', req.get('validation-token'))
   res.send('')

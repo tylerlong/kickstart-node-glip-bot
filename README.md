@@ -1,5 +1,7 @@
 # kickstart-node-glip-bot
 
+{{ description }}
+
 
 ## Setup
 
