@@ -14,7 +14,7 @@
     "log:stream": "yarn log -t",
     "remove": "cd messages && serverless remove",
     "deploy:full": "yarn build && cd messages && serverless deploy",
-    "deploy:full:prod": "yarn release && cd messages && serverless deploy",
+    "deploy:full:prod": "yarn release && cd messages && serverless deploy --stage prod",
     "deploy": "yarn deploy:full function -f handleMessage"
   },
   "dependencies": {

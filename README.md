@@ -24,6 +24,10 @@ edit env.yml
 
     yarn deploy
 
+### Deploy to production
+
+    yarn deploy:full:prod
+
 
 ## Service information
 
@@ -39,8 +43,6 @@ Or check log in realtime:
     yarn run log:stream
 
 
-## What if found a bug in production?
+## Remove the service
 
-- change `serverless.yml` stage to `dev`
-- fix the bug.
-- change `serverless.yml` stage to `production`
+    yarn run remove
