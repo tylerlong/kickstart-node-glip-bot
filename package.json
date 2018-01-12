@@ -6,17 +6,24 @@
   "license": "MIT",
   "scripts": {
     "upgrade": "yarn-upgrade-all",
+    "build": "webpack --progress --colors",
+    "build:watch": "yarn build --watch",
+    "release": "yarn build -p",
     "info": "cd messages && serverless info",
     "log": "cd messages && serverless -f handleMessage logs",
     "log:stream": "yarn log -t",
     "remove": "cd messages && serverless remove",
-    "deploy:full": "cd messages && serverless deploy",
+    "deploy:full": "yarn build && cd messages && serverless deploy",
+    "deploy:full:prod": "yarn release && cd messages && serverless deploy",
     "deploy": "yarn deploy:full function -f handleMessage"
   },
   "dependencies": {
     "ringcentral-js-concise": "^0.1.0"
   },
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
     "serverless": "^1.25.0",
     "standard": "^10.0.3",
     "yarn-upgrade-all": "^0.3.0"
