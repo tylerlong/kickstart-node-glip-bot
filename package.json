@@ -14,7 +14,6 @@
     "deploy": "yarn deploy:full function -f handleMessage"
   },
   "dependencies": {
-    "dotenv": "^4.0.0",
     "ringcentral-js-concise": "^0.1.0"
   },
   "devDependencies": {
