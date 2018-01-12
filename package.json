@@ -2,21 +2,24 @@
   "name": "kickstart-node-glip-bot",
   "version": "0.1.0",
   "description": "{{ description }}",
+  "private": true,
   "license": "MIT",
   "scripts": {
     "upgrade": "yarn-upgrade-all",
-    "start": "node index.js",
-    "ngrok": "ngrok http 3000"
-  },
-  "devDependencies": {
-    "ngrok": "^2.2.24",
-    "standard": "^10.0.3",
-    "yarn-upgrade-all": "^0.3.0"
+    "info": "cd messages && severless info",
+    "log": "cd messages && serverless -f handleMessage logs",
+    "log:stream": "yarn log -t",
+    "remove": "cd messages && serverless remove",
+    "deploy:full": "cd licenses && serverless deploy",
+    "deploy": "yarn deploy:full function -f handleMessage"
   },
   "dependencies": {
-    "body-parser": "^1.18.2",
     "dotenv": "^4.0.0",
-    "express": "^4.16.2",
     "ringcentral-js-concise": "^0.1.0"
+  },
+  "devDependencies": {
+    "serverless": "^1.25.0",
+    "standard": "^10.0.3",
+    "yarn-upgrade-all": "^0.3.0"
   }
 }
