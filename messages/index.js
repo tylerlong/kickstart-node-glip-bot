@@ -5,8 +5,11 @@ const rc = new RingCentral('', '', process.env.GLIP_API_SERVER)
 rc.token(token)
 
 const handleMessage = (event, context, callback) => {
-  const body = JSON.parse(event.body)
-  const message = body.body
+  callback(null, { statusCode: 200, body: '', headers: { 'validation-token': event.headers['validation-token'] } })
+  if (event.body === null) {
+    return
+  }
+  const message = JSON.parse(event.body).body
   if (message && message.creatorId !== token.owner_id) {
     rc.post('/restapi/v1.0/glip/posts', {
       groupId: message.groupId,
@@ -14,7 +17,6 @@ const handleMessage = (event, context, callback) => {
       attachments: undefined
     })
   }
-  callback(null, { statusCode: 200, body: '', headers: { 'validation-token': event.headers['validation-token'] } })
 }
 
 module.exports = { handleMessage }
