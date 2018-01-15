@@ -4,7 +4,7 @@ const token = JSON.parse(process.env.GLIP_API_TOKEN)
 const rc = new RingCentral('', '', process.env.GLIP_API_SERVER)
 rc.token(token)
 
-const handleMessage = (event, context, callback) => {
+export const handleMessage = (event, context, callback) => {
   if (event.headers['Verification-Token'] !== process.env.GLIP_VERIFICATION_TOKEN) {
     callback(null, { statusCode: 404 })
     return
@@ -22,5 +22,3 @@ const handleMessage = (event, context, callback) => {
     })
   }
 }
-
-module.exports = { handleMessage }
