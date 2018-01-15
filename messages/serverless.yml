@@ -1,5 +1,5 @@
 service:
-    name: glip-messages
+    name: {{ projectName }}-messages
 provider:
     name: aws
     runtime: nodejs6.10
