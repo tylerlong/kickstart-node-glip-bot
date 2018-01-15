@@ -1,9 +1,9 @@
 {
-  "name": "kickstart-node-glip-bot",
-  "version": "0.1.0",
+  "name": "{{ projectName }}",
+  "version": "{{ version }}",
   "description": "{{ description }}",
   "private": true,
-  "license": "MIT",
+  "license": "{{ license }}",
   "scripts": {
     "upgrade": "yarn-upgrade-all",
     "build": "webpack --progress --colors",

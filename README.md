@@ -1,6 +1,8 @@
-# kickstart-node-glip-bot
+# {{ projectName }}
 
 {{ description }}
+
+{# This is a [kickstart](https://github.com/tylerlong/kickstart) project. #}
 
 
 ## Setup
