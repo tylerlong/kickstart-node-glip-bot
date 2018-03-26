@@ -1,4 +1,5 @@
 const config = {
+  mode: 'development',
   target: 'node',
   entry: {
     'messages': ['babel-polyfill', './messages/index.js']
